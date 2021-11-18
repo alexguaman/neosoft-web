@@ -1,0 +1,44 @@
+@import 'vars';
+
+.ClientList {
+	display: block;
+	//grid-template-columns: repeat(auto-fill, 240px);
+	gap: 26px;
+	align-items: center;
+	place-content: center;
+	margin: 3em 0 0 0;
+}
+
+@media (max-width: 640px) {
+	.ClientList {
+		//grid-template-columns: repeat(auto-fill, 140px);
+	}
+}
+
+
+
+table { 
+	width: 80%; 
+	border-collapse: collapse; 
+	align-items: center;
+  }
+  /* Zebra striping */
+  tr:nth-of-type(odd) { 
+	background: #eee; 
+  }
+  th { 
+	background: #333; 
+	color: white; 
+	font-weight: bold; 
+	font-size: 14px;
+	text-align: center; 
+  }
+  td, th { 
+	padding: 6px; 
+	border: 1px solid #ccc; 
+	font-size: 12px;
+  }
+  td { 
+	text-align: left; 
+	font-size: 12px;
+  }
