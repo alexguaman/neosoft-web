@@ -5,15 +5,11 @@ import Layout from '../containers/Layout';
 import Login from '../containers/Login';
 import Home from '../pages/Home';
 import NotFound from '../pages/NotFound';
-import AppContext from '../context/AppContext';
 import '../styles/global.css';
-import useInitialState from '../hooks/useInitialState';
 
 const App = () => {
-	const initialState = useInitialState();
 
 	return (		
-		<AppContext.Provider value={initialState}>
 
 		<BrowserRouter>
 			<Layout>
@@ -25,7 +21,7 @@ const App = () => {
 				</Switch>
 			</Layout>
 		</BrowserRouter>
-		</AppContext.Provider>
+
 	);
 }
 

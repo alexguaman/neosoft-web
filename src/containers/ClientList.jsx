@@ -3,7 +3,7 @@ import ClientItem from "@components/ClientItem";
 import "@styles/ClientList.scss";
 import useGetClients from "../hooks/useGetClient";
 
-const API = "http://localhost:8090/app/clientes/";
+const API = "http://localhost:8090/neosoft-api/clientes/";
 
 const ClientList = () => {
   const clients = useGetClients(API);

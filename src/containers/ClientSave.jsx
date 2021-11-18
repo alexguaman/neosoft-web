@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useRef } from "react";
+import { useAlert } from 'react-alert';
 import "../styles/ClientSave.scss";
 
 const ClientSave = () => {
   const form = useRef(null);
-  const API = "http://localhost:8090/app/clientes/";
-
+  const API = "http://localhost:8090/neosoft-api/clientes/";
+  const alert = useAlert();
+   
   const [nombresField, setNombresField] = React.useState({
     value: "",
     hasError: false,
@@ -30,8 +32,9 @@ const ClientSave = () => {
     if (!hasError) {
       console.log(dataClient);
       sendPostRequest(dataClient);
-      window.location = "/";
+      handleReset();
     }
+
   };
 
   const sendPostRequest = async (dataClient) => {
@@ -42,23 +45,29 @@ const ClientSave = () => {
         console.log(resp.data);
 
         if (resp.data.status == 201){
-          alert("Saved Succesfully... ");
+          alert.show("Saved Succesfully... ");
         } else {
-          alert("Error: " + resp.data.status + " - " + resp.data.message);
+          alert.show("Error: " + resp.data.status + " - " + resp.data.message);
         }
-
         
       })
       .catch((err) => {
         console.error(err);
-        alert("An error has occurred " + err);
+        alert.show("An error has occurred " + err);
       });
+      
   };
 
   function handleChange(evt) {
    const hasError = false;
     setNombresField((prevState) => ({ ...prevState, hasError }));
   }
+
+  const handleReset = () => {
+    Array.from(document.querySelectorAll("input")).forEach(
+      input => (input.value = "")
+    );
+  };
 
   return (
     <div className="clientSave">
